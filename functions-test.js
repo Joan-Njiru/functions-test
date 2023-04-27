@@ -3,25 +3,32 @@ let groceries=["onions","tomatoes","garlic","capsicum","ginger","avocado"]
 
 //Create a separate array with the corresponding stock quantities of each item.
 let quantities=[12,24,16,20,14,24]
-let addGroceries={
-   "potatoes":32,
-}
+
 
 //Write a function to add a new item to the inventory, updating both arrays.
-function addItem(obj){
-   groceries.push(Object.keys(obj))
-   quantities.push(Object.values(obj))
+function addItem(item,quant){
+  
+   groceries.push(item)
+   quantities.push(quant)
    console.log(groceries)
    console.log(quantities);
 }
-console.log(addItem(addGroceries));
+addItem("Courgettes",8)
 
 //Write a function to update the stock quantity of an existing item.
-function updateStock(newValue){
-for(q of quantities){
-  console.log(q+=newValue)
-}
-}
+function updateStock(item1,quant1){
+   let check=groceries.indexOf(item1)
+   if(check=== -1){
+      console.log("Item not found");
+     
+   }
+   
+      
+      quantities.push(quant1)
+      console.log(item1+ " has been updated with " + quant1 + " as it's new quantity");
+   }
+
+updateStock("Groceries",9)
 
 
 //Write a function to calculate the total number of items in the inventory.
@@ -37,9 +44,10 @@ console.log(totalItems(quantities));
 
 //Write a function to find the item with the lowest stock quantity.
 
-function lowestStock(quantities){
+function lowestStock(){
 let min=Math.min(...quantities);
-console.log(min); 
+let index=quantities.indexOf(min)
+console.log(groceries[index]); 
 }
 lowestStock()
 
